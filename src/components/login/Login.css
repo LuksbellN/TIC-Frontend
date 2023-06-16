@@ -1,0 +1,164 @@
+  /* .login-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    width: 300px;
+  }
+
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1A2F3A;
+  }
+  
+  .login-card {
+    width: 300px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+   */
+
+  /* .login-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--bg-dark);
+    padding-left: 20%;
+  }
+  
+  .login-card {
+    width: 400px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .login-card input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .login-card button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+   */
+  
+
+  /* body {
+    background-color: #1A2F3A;
+    background-image: url("C:\Users\belch\Downloads\codigo creche v2\TIC-Frontend\src\assets\images\bgImage.jpeg");
+    background-repeat: no-repeat;
+    background-position: right center;
+  }
+  
+  .login-card {
+    width: 400px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .login-card input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .login-card button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+
+  .page-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to left, #1A2F3A 50%, #FFFFFF 50%);
+  }
+  
+  .login-card {
+    width: 400px;
+    max-width: 90%;
+  }
+   */
+
+
+   /* .page-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #1A2F3A 50%, transparent 50%),
+    url("C:\Users\belch\Downloads\codigo creche v2\TIC-Frontend\src\assets\images\bgImage.jpeg") no-repeat center;
+    background-size: 50% 100%, cover;
+  }
+  
+  .login-card {
+    width: 400px;
+    max-width: 90%;
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 0.5rem;
+  } */
+
+  .page-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to left, #162430, #1A2F3A, #162430);
+  }
+  
+  
+  .login-card {
+    width: 400px;
+    background-color: #FFFFFF;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-card form {
+    margin-top: 20px;
+  }
+  
+  .login-card label {
+    font-size: 18px;
+  }
+  
+  .login-card input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #CCC;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .login-card input:focus {
+    outline: none;
+    border-color: #2ECC71;
+    box-shadow: 0px 0px 5px rgba(46, 204, 113, 0.5);
+  }
+  
+  .login-card button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    background-color: #2ECC71;
+    border: none;
+    border-radius: 8px;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-card button:hover {
+    background-color: #27AE60;
+  }
+  
