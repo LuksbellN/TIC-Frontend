@@ -59,15 +59,15 @@ export default class UserCrud extends Component {
     })
       .then(async resp => {
         let list;
-        if(method === 'post') {
-          list =  this.getUpdatedList(resp.data.data, true);
+        if (method === 'post') {
+          list = this.getUpdatedList(resp.data.data, true);
         } else {
-          list = this.getUpdatedList({...user, ...resp.data})
+          list = this.getUpdatedList({ ...user, ...resp.data })
         }
         this.setState({ user: initialState.user, list });
       });
   }
-  
+
 
   getUpdatedList(user, add = true) {
     const list = this.state.list.filter(u => u.id !== user.id);
@@ -92,7 +92,8 @@ export default class UserCrud extends Component {
     await axios.delete(`${baseUrl}/usuario/${user.id}`, {
       headers: {
         Authorization: 'Bearer ' + token
-      }}).then(resp => {
+      }
+    }).then(resp => {
       const list = this.getUpdatedList(user, false);
       this.setState({ list })
     })
@@ -179,11 +180,11 @@ export default class UserCrud extends Component {
 
         <div className="row">
           <div className="col-12 d-flex justify-content-end">
-            <button className="btn btn-primary" onClick={async e => await this.save(e)}>
+            <button className="btn btn-primary btn-lg" onClick={async e => await this.save(e)}>
               Salvar
             </button>
 
-            <button className="btn btn-secondary ml-2" onClick={e => this.clear(e)} style={{ marginLeft: '8px' }}>
+            <button className="btn btn-secondary btn-lg ml-2" onClick={e => this.clear(e)} style={{ marginLeft: '8px' }}>
               Cancelar
             </button>
           </div>

@@ -124,11 +124,11 @@ export default class CategoriaCrud extends Component {
 
         <div className="row">
           <div className="col-12 d-flex justify-content-end">
-            <button className="btn btn-primary" onClick={async e => await this.save(e)}>
+            <button className="btn btn-primary btn-lg" onClick={async e => await this.save(e)}>
               Salvar
             </button>
 
-            <button className="btn btn-secondary ml-2" onClick={e => this.clear(e)} style={{ marginLeft: '8px' }}>
+            <button className="btn btn-secondary btn-lg ml-2" onClick={e => this.clear(e)} style={{ marginLeft: '8px' }}>
               Cancelar
             </button>
           </div>

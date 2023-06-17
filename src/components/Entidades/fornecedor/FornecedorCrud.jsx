@@ -123,14 +123,14 @@ export default class FornecedorCrud extends Component {
         <div className="row">
           <div className="col-12 d-flex justify-content-end">
             <button
-              className="btn btn-primary"
+              className="btn btn-primary btn-lg"
               onClick={e => this.save(e)}
             >
               Salvar
             </button>
 
             <button
-              className="btn btn-secondary" 
+              className="btn btn-secondary btn-lg"
               style={{ marginLeft: '8px' }}
               onClick={e => this.clear(e)}
             >

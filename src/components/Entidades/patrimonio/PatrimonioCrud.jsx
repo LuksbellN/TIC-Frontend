@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from "../../../main/axiosConfig";
 import Main from "../../template/Main";
 
@@ -7,6 +8,7 @@ const headerProps = {
     title: 'Patrimônio',
     subtitle: 'Consulta de Patrimônios'
 };
+
 
 const initialState = {
     patrimonios: [],
@@ -25,7 +27,7 @@ const initialState = {
     }
 };
 
-export default class PatrimonioCrud extends Component {
+class PatrimonioCrud extends Component {
     state = { ...initialState };
 
     componentDidMount() {
@@ -81,7 +83,6 @@ export default class PatrimonioCrud extends Component {
         });
     }
 
-
     handleOrigemChange(event) {
         const { name, checked } = event.target;
         this.setState(prevState => ({
@@ -90,6 +91,11 @@ export default class PatrimonioCrud extends Component {
                 [name]: checked
             }
         }));
+    }
+
+    handleCreateClick() {
+        const navigate = this.props.navigate;
+        navigate('/patrimonio/criar');
     }
 
     async remove(patrimonio) {
@@ -171,7 +177,12 @@ export default class PatrimonioCrud extends Component {
             .get(url, { headers })
             .then(res => {
                 const lista = res.data.data.map(e => {
-                    return { ...e, data_aquisicao: convertDate(e.data_aquisicao) };
+                    return {
+                        ...e,
+                        data_aquisicao: convertDate(e.data_aquisicao),
+                        nome_departamento: e.departamento.nome_dpto,
+                        nome_categoria: e.categoria.desc_categoria
+                    };
                 });
                 this.setState({ patrimonios: lista });
             })
@@ -285,7 +296,7 @@ export default class PatrimonioCrud extends Component {
                         <div className="row">
                             <div>
                                 <div className="form-group">
-                                    <label>Consulta:</label>
+                                    <label>Busca:</label>
                                     <input
                                         type="text"
                                         className="form-control"
@@ -299,6 +310,9 @@ export default class PatrimonioCrud extends Component {
 
                             <button className="btn btn-primary btn-lg" onClick={() => this.search()}>
                                 Buscar
+                            </button>
+                            <button className="btn btn-success btn-lg ms-2" onClick={() => this.handleCreateClick()}>
+                                + Novo
                             </button>
                         </div>
                     </div>
@@ -316,6 +330,8 @@ export default class PatrimonioCrud extends Component {
             { name: 'id', label: 'ID' },
             { name: 'nome', label: 'Nome' },
             { name: 'data_aquisicao', label: 'Data Aquisição' },
+            { name: 'nome_departamento', label: 'Departamento' },
+            { name: 'nome_categoria', label: 'Categoria' },
             { name: 'estado', label: 'Estado' }
         ];
 
@@ -378,4 +394,10 @@ export default class PatrimonioCrud extends Component {
             </Main>
         );
     }
+}
+
+export default function PatrimonioCrudWrapper(props) {
+    const navigate = useNavigate();
+
+    return <PatrimonioCrud {...props} navigate={navigate} />;
 }
