@@ -2,10 +2,12 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import Home from "../components/home/Home";
-import UserCrud from "../components/Entidades/user/UserCrud";
-import CategoriaCrud from "../components/Entidades/categoria/CategoriaCrud";
 import Login from "../components/login/Login";
 import axios, { HttpStatusCode } from "axios";
+import UserCrud from "../components/Entidades/user/UserCrud";
+import CategoriaCrud from "../components/Entidades/categoria/CategoriaCrud";
+import FornecedorCrud from "../components/Entidades/fornecedor/FornecedorCrud";
+import PatrimonioCrud from "../components/Entidades/patrimonio/PatrimonioCrud";
 
 export const isAuthenticated = () => {
     // Implemente a lógica de verificação do token aqui
@@ -61,6 +63,22 @@ const Rotas = () => {
                 element={
                     <ProtectedRoute>
                         <CategoriaCrud />
+                    </ProtectedRoute>
+                }
+            />
+            <Route
+                path="/fornecedores"
+                element={
+                    <ProtectedRoute>
+                        <FornecedorCrud />
+                    </ProtectedRoute>
+                }
+            />
+            <Route
+                path="/patrimonios"
+                element={
+                    <ProtectedRoute>
+                        <PatrimonioCrud />
                     </ProtectedRoute>
                 }
             />

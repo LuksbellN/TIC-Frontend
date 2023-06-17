@@ -15,6 +15,12 @@ const Nav = props => {
                 <Link to="/categorias">
                     <i className="fa fa-tags"></i> Categorias
                 </Link>
+                <Link to="/fornecedores">
+                    <i className="fa fa-building"></i> Fornecedores
+                </Link>
+                <Link to="/patrimonios">
+                    <i className="fa fa-home"></i> Patrimonios
+                </Link>
             </nav>
         </aside>
     )
