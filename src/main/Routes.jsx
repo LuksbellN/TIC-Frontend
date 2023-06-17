@@ -2,7 +2,8 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import Home from "../components/home/Home";
-import UserCrud from "../components/user/UserCrud";
+import UserCrud from "../components/Entidades/user/UserCrud";
+import CategoriaCrud from "../components/Entidades/categoria/CategoriaCrud";
 import Login from "../components/login/Login";
 import axios, { HttpStatusCode } from "axios";
 
@@ -52,6 +53,14 @@ const Rotas = () => {
                 element={
                     <ProtectedRoute>
                         <UserCrud />
+                    </ProtectedRoute>
+                }
+            />
+            <Route
+                path="/categorias"
+                element={
+                    <ProtectedRoute>
+                        <CategoriaCrud />
                     </ProtectedRoute>
                 }
             />

@@ -12,6 +12,9 @@ const Nav = props => {
                 <Link to="/users">
                     <i className="fa fa-users"></i> Usuários
                 </Link>
+                <Link to="/categorias">
+                    <i className="fa fa-tags"></i> Categorias
+                </Link>
             </nav>
         </aside>
     )
