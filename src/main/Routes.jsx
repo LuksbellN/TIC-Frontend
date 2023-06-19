@@ -7,7 +7,9 @@ import axios, { HttpStatusCode } from "axios";
 import UserCrud from "../components/Entidades/user/UserCrud";
 import CategoriaCrud from "../components/Entidades/categoria/CategoriaCrud";
 import FornecedorCrud from "../components/Entidades/fornecedor/FornecedorCrud";
-import PatrimonioCrud from "../components/Entidades/patrimonio/PatrimonioCrud";
+import PatrimonioList from "../components/Entidades/patrimonio/PatrimonioList";
+import PatrimonioCreate from "../components/Entidades/patrimonio/PatrimonioCreate";
+import PatrimonioDetails from "../components/Entidades/patrimonio/PatrimonioDetails";
 
 export const isAuthenticated = () => {
     // Implemente a lógica de verificação do token aqui
@@ -78,10 +80,26 @@ const Rotas = () => {
                 path="/patrimonios"
                 element={
                     <ProtectedRoute>
-                        <PatrimonioCrud />
+                        <PatrimonioList />
                     </ProtectedRoute>
                 }
             />
+            <Route
+                path="/patrimonios/criar"
+                element={
+                    <ProtectedRoute>
+                        <PatrimonioCreate />
+                    </ProtectedRoute>
+                }
+            /> 
+            <Route
+                path="/patrimonios/detalhe/:id"
+                element={
+                    <ProtectedRoute>
+                        <PatrimonioDetails />
+                    </ProtectedRoute>
+                }
+            /> 
             <Route path="/*" element={<Navigate to="/home" />} />
         </Routes>
     );

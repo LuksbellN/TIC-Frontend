@@ -3,12 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import axios from "../../../main/axiosConfig";
 import Main from "../../template/Main";
 
+
 const headerProps = {
     icon: 'home',
     title: 'Patrimônio',
     subtitle: 'Consulta de Patrimônios'
 };
 
+const estados = {
+    '1': 'Péssimo',
+    '2': 'Ruim',
+    '3': 'Regular',
+    '4': 'Bom',
+    '5': 'Ótimo'
+}
 
 const initialState = {
     patrimonios: [],
@@ -27,7 +35,7 @@ const initialState = {
     }
 };
 
-class PatrimonioCrud extends Component {
+class PatrimonioList extends Component {
     state = { ...initialState };
 
     componentDidMount() {
@@ -94,8 +102,8 @@ class PatrimonioCrud extends Component {
     }
 
     handleCreateClick() {
-        const navigate = this.props.navigate;
-        navigate('/patrimonio/criar');
+        this.props.navigate('/patrimonios/criar');
+
     }
 
     async remove(patrimonio) {
@@ -108,6 +116,11 @@ class PatrimonioCrud extends Component {
             const pats = this.state.patrimonios;
             this.setState({ patrimonios: pats.filter(p => p.id !== resp.data.data.id) });
         })
+    }
+
+
+    handleDetails(patrimonio) {
+        this.props.navigate(`/patrimonios/detalhe/${patrimonio.id}`);
     }
 
 
@@ -176,12 +189,13 @@ class PatrimonioCrud extends Component {
         axios
             .get(url, { headers })
             .then(res => {
-                const lista = res.data.data.map(e => {
+                const lista = res.data.data.map(p => {
                     return {
-                        ...e,
-                        data_aquisicao: convertDate(e.data_aquisicao),
-                        nome_departamento: e.departamento.nome_dpto,
-                        nome_categoria: e.categoria.desc_categoria
+                        ...p,
+                        data_aquisicao: convertDate(p.data_aquisicao),
+                        nome_departamento: p.departamento.nome_dpto,
+                        nome_categoria: p.categoria.desc_categoria,
+                        estado: estados[p.estado]
                     };
                 });
                 this.setState({ patrimonios: lista });
@@ -242,7 +256,7 @@ class PatrimonioCrud extends Component {
                                 value={this.state.categoria}
                                 onChange={e => this.updateCategoria(e)}
                             >
-                                <option value="">Selecione uma categoria</option>
+                                <option value="">Todos</option>
                                 {categorias.map(categoria => (
                                     <option key={categoria.id} value={categoria.id}>
                                         {categoria.nome_categoria}
@@ -259,7 +273,7 @@ class PatrimonioCrud extends Component {
                                 value={this.state.departamento}
                                 onChange={e => this.updateDepartamento(e)}
                             >
-                                <option value="">Selecione um departamento</option>
+                                <option value="">Todos</option>
                                 {departamentos.map(departamento => (
                                     <option key={departamento.id} value={departamento.id}>
                                         {departamento.nome_departamento}
@@ -359,32 +373,36 @@ class PatrimonioCrud extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {patrimonios.map(patrimonio => (
-                        <tr key={patrimonio.id}>
+                    {patrimonios.map((patrimonio) => (
+                        <tr
+                            key={patrimonio.id}
+                        >
                             {columns.map(column => (
                                 <td key={column.name}>{patrimonio[column.name]}</td>
                             ))}
                             <td>
                                 <button
                                     className="btn btn-warning"
-                                    onClick={() => this.remove(patrimonio)}
+                                    onClick={e => this.handleDetails(patrimonio)}
                                 >
-                                    <i className="fa fa-pencil"></i>
+                                    <i className="fa fa-file" />
                                 </button>
                                 <button
                                     className="btn btn-danger"
                                     onClick={() => this.remove(patrimonio)}
                                     style={{ marginLeft: '4px' }}
                                 >
-                                    <i className="fa fa-trash"></i>
+                                    <i className="fa fa-trash" />
                                 </button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
+
             </table>
         );
     }
+
 
     render() {
         return (
@@ -396,8 +414,8 @@ class PatrimonioCrud extends Component {
     }
 }
 
-export default function PatrimonioCrudWrapper(props) {
+export default function PatrimonioListWrapper(props) {
     const navigate = useNavigate();
 
-    return <PatrimonioCrud {...props} navigate={navigate} />;
+    return <PatrimonioList {...props} navigate={navigate} />;
 }
