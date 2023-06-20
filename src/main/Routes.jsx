@@ -7,9 +7,14 @@ import axios, { HttpStatusCode } from "axios";
 import UserCrud from "../components/Entidades/user/UserCrud";
 import CategoriaCrud from "../components/Entidades/categoria/CategoriaCrud";
 import FornecedorCrud from "../components/Entidades/fornecedor/FornecedorCrud";
+
 import PatrimonioList from "../components/Entidades/patrimonio/PatrimonioList";
 import PatrimonioCreate from "../components/Entidades/patrimonio/PatrimonioCreate";
 import PatrimonioDetails from "../components/Entidades/patrimonio/PatrimonioDetails";
+
+import DepartamentoCRUD from "../components/Entidades/departamento/DepartamentoCRUD";
+import TipoOcorrenciaCRUD from "../components/Entidades/tipoOcorrencia/TipoOcorrenciaCRUD";
+import OcorrenciaCrud from "../components/Entidades/ocorrencia/OcorrenciaCRUD";
 
 export const isAuthenticated = () => {
     // Implemente a lógica de verificação do token aqui
@@ -97,6 +102,30 @@ const Rotas = () => {
                 element={
                     <ProtectedRoute>
                         <PatrimonioDetails />
+                    </ProtectedRoute>
+                }
+            /> 
+            <Route
+                path="/departamentos"
+                element={
+                    <ProtectedRoute>
+                        <DepartamentoCRUD />
+                    </ProtectedRoute>
+                }
+            /> 
+            <Route
+                path="/ocorrenciatipos"
+                element={
+                    <ProtectedRoute>
+                        <TipoOcorrenciaCRUD />
+                    </ProtectedRoute>
+                }
+            /> 
+            <Route
+                path="/ocorrencias"
+                element={
+                    <ProtectedRoute>
+                        <OcorrenciaCrud />
                     </ProtectedRoute>
                 }
             /> 

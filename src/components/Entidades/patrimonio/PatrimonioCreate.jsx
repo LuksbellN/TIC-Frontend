@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Main from '../../template/Main';
 
 const headerProps = {
-    icon: 'home',
+    icon: 'archive',
     title: 'Cadastrar Patrimônio',
     subtitle: 'Cadastro de Patrimônios',
 };

@@ -5,7 +5,7 @@ import Main from "../../template/Main";
 
 
 const headerProps = {
-    icon: 'home',
+    icon: 'archive',
     title: 'Patrimônio',
     subtitle: 'Consulta de Patrimônios'
 };

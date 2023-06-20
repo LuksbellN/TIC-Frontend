@@ -19,7 +19,16 @@ const Nav = props => {
                     <i className="fa fa-building"></i> Fornecedores
                 </Link>
                 <Link to="/patrimonios">
-                    <i className="fa fa-home"></i> Patrimonios
+                    <i className="fa fa-archive"></i> Patrimonios
+                </Link>
+                <Link to="/ocorrenciatipos">
+                    <i className="fa fa-exclamation-triangle"></i> Tipos de Ocorrência
+                </Link>
+                <Link to="/departamentos">
+                    <i className="fa fa-university"></i> Departamentos
+                </Link>
+                <Link to="/ocorrencias">
+                    <i className="fa fa-exclamation-circle"></i> Ocorrencias
                 </Link>
             </nav>
         </aside>

@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Main from '../../template/Main';
 
 const headerProps = {
-    icon: 'home',
+    icon: 'archive',
     title: 'Detalhes do Patrimônio',
     subtitle: 'Visualização e Edição de Patrimônio',
 };
